@@ -7,36 +7,30 @@ description: Generates daily crypto morning notes by running FRNT Crypto Index a
 
 Say: "Give me the morning notes" or "Run the morning note"
 
-## What This Does
-
-Calculates the **FRNT Crypto Index** - a market-cap weighted index of the top 20 cryptocurrencies (excluding stablecoins and wrapped tokens). Fetches live data from CoinGecko API.
-
-Runs two analysis scripts:
-1. **Netcoins version** - Index + top/bottom performers from Netcoins asset list (63 assets)
-2. **Global version** - Index + top/bottom performers from top 20 by market cap globally
-
 ## Prerequisites
 
 ```bash
 pip install requests pandas
 ```
 
-## Execution
+## Instructions
 
-Run from the skill's scripts directory:
-
+1. Run BOTH scripts from the skill's scripts directory:
 ```bash
 cd ~/.claude/skills/team/research/generating-morning-notes/scripts
 python3 morning_note_netcoinsversion.py
 python3 morning_note.py
 ```
 
-## Output Format
+2. Extract ONLY these values from each script's output:
+   - FRNT Crypto Index percentage
+   - Top Performer name, symbol, and change %
+   - Top Underperformer name, symbol, and change %
 
-Save combined output to `morning-note-YYYY-MM-DD.md`:
+3. Save to `morning-note-YYYY-MM-DD.md` using EXACTLY this format (no tables, no extra data):
 
 ```markdown
-# Morning Note - [DATE]
+# Morning Note - [Full Date]
 
 ## Netcoins Version
 - **FRNT Crypto Index:** [value]%
@@ -49,4 +43,6 @@ Save combined output to `morning-note-YYYY-MM-DD.md`:
 - **Top Underperformer:** [name] ([symbol]) [change]%
 ```
 
-Report the file path when complete.
+4. Report the file path when complete.
+
+IMPORTANT: Keep output concise. Do NOT add tables, market commentary, asset lists, or additional sections. Just the 6 data points above.
